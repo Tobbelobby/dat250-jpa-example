@@ -30,7 +30,7 @@ public class MainTest {
     @Test
     public void testDomainModelPersistence() {
         // Run the main class to persist the objects.
-        Main.main(new String[]{});
+        Main.main(new String[] {});
 
         EntityManager em = factory.createEntityManager();
 
@@ -64,13 +64,15 @@ public class MainTest {
         // Test pincode
         Pincode firstCardPincode = firstCard.getPincode();
 
-        assertThat(firstCardPincode.getId(), is(secondCard.getPincode().getId())); // Pincode objects of the two cards are identical!
+        assertThat(firstCardPincode.getId(), is(secondCard.getPincode().getId())); // Pincode objects of the two cards
+                                                                                   // are identical!
         assertThat(firstCardPincode.getPincode(), is("123"));
         assertThat(firstCardPincode.getCount(), is(1));
 
         // Test bank
         Bank bank = firstCard.getOwningBank();
-        assertThat(bank.getId(), is(secondCard.getOwningBank().getId())); // Bank objects of the two cards are identical!
+        assertThat(bank.getId(), is(secondCard.getOwningBank().getId())); // Bank objects of the two cards are
+                                                                          // identical!
         assertThat(bank.getName(), is("Pengebank"));
         assertThat(bank.getOwnedCards(), is(Set.of(firstCard, secondCard)));
     }
